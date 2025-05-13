@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Configuração do banco de dados
-DATABASE_URL = "mysql+pymysql://usuario:senha@localhost/nome_do_banco"  # Atualize aqui
+DATABASE_URL = "mysql+pymysql://root:Hangloose12@localhost/fastapi_produtos"  # Atualize aqui
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
