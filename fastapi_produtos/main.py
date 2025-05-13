@@ -4,6 +4,7 @@ from routers.categoria_router import router as categoria_router
 from routers.login_router import router as login_router
 from database import criar_bd
 from fastapi.middleware.cors import CORSMiddleware
+from routers import auth
 
 # Instância principal da aplicação FastAPI
 app = FastAPI(
@@ -22,6 +23,7 @@ app.add_middleware(
 )
 
 # Inclusão dos routers
+app.include_router(auth.router)
 app.include_router(categoria_router)
 app.include_router(produto_router)
 app.include_router(login_router)
