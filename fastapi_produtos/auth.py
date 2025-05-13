@@ -10,9 +10,11 @@ from database import get_db
 from config import settings  # Importando as configurações
 from schemas.produto_schema import User as SchemaUser  # Usando o esquema User para validação
 from schemas.user_schema import UserCreate, UserLogin  # Importando os esquemas de criação e login de usuário
+from schemas.user_schema import UserSchema  # ou UserCreate / UserLogin conforme necessidade
 
 # OAuth2 Password Bearer (para autenticação via token)
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+
 
 # Função para criar um token JWT com tempo de expiração
 def create_access_token(data: dict, expires_delta: timedelta = timedelta(minutes=30)):

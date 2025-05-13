@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from routers.produto_router import router as produto_router
 from routers.categoria_router import router as categoria_router
-from routers.login_router import router as login_router
 from database import criar_bd
 from fastapi.middleware.cors import CORSMiddleware
-from routers import auth
+from routers import auth, user_router
+from routers.user_router import router as user_router  # Correção: Importando a variável user_router
 
 # Instância principal da aplicação FastAPI
 app = FastAPI(
@@ -23,10 +23,10 @@ app.add_middleware(
 )
 
 # Inclusão dos routers
-app.include_router(auth.router)
-app.include_router(categoria_router)
-app.include_router(produto_router)
-app.include_router(login_router)
+app.include_router(auth.router)         # Rota de autenticação
+app.include_router(categoria_router)    # Rota de categorias
+app.include_router(produto_router)      # Rota de produtos
+app.include_router(user_router)         # Correção: Incluindo o router de usuários
 
 # Rota de saúde (verificação do status da aplicação)
 @app.get("/health")

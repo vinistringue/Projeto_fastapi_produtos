@@ -1,8 +1,11 @@
 import os
 from dotenv import load_dotenv
 
+
 # Carregar variáveis de ambiente do arquivo .env
 load_dotenv()
+SECRET_KEY = "sua_chave_secreta_aqui"
+ALGORITHM = "HS256"  # Exemplo de algoritmo de criptografia
 
 class Settings:
     DB_HOST: str = os.getenv("DB_HOST")

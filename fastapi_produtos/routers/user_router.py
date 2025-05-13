@@ -17,3 +17,7 @@ def login(user_login: UserLogin, db: Session = Depends(get_db)):
     user = authenticate_user(db=db, user_login=user_login)
     access_token = create_access_token(data={"sub": user.username})
     return {"access_token": access_token, "token_type": "bearer"}
+
+@router.get("/users")
+def get_users():
+    return {"message": "Lista de usuários"}
